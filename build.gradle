@@ -1,0 +1,58 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.5'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'  // (1) QueryDSL 플러그인 설치
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.querydsl:querydsl-jpa'  // (2) QueryDSL 설치
+	implementation 'mysql:mysql-connector-java:8.0.29'
+
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+}
+
+def generatedQuerydslDir = 'build/generated/querydsl'
+
+querydsl {
+	library = 'com.querydsl:querydsl-apt'  // 이거 해주면 4.1.4 사라짐
+	jpa = true
+	querydslSourcesDir = generatedQuerydslDir
+}
+
+sourceSets {
+	main.java.srcDirs += [generatedQuerydslDir]
+}
+
+configurations {
+	querydsl.extendsFrom compileClasspath  // 오타 주의: complieClasspath 이렇게 오타치면 망함
+}
+
+compileQuerydsl {
+	options.annotationProcessorPath = configurations.querydsl
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
