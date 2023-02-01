@@ -1,5 +1,8 @@
 package com.example.webpos.common.error;
 
+import lombok.Getter;
+
+@Getter
 public enum ErrorCode {
     // MEMBER
     MEMBER_NOT_FOUND(404, "M01", "존재하지 않는 유저입니다."),

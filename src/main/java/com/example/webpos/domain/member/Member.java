@@ -10,11 +10,11 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString
+@NoArgsConstructor
+@Table(name = "member")
 public class Member extends BaseTimeEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 
@@ -35,5 +35,21 @@ public class Member extends BaseTimeEntity {
         this.password = password;
         this.phone = phone;
         this.memberType = memberType;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

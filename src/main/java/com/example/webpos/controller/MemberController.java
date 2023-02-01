@@ -1,5 +1,6 @@
 package com.example.webpos.controller;
 
+import com.example.webpos.domain.member.Member;
 import com.example.webpos.dto.member.MemberSignUpReq;
 import com.example.webpos.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping()
-    public Boolean signUp(@RequestBody MemberSignUpReq req) {
+    public Member signUp(@RequestBody MemberSignUpReq req) {
         return memberService.save(req);
     }
 }
