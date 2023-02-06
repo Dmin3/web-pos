@@ -23,4 +23,12 @@ public class MemberSignUpReq {
                 memberType
         );
     }
+
+    public MemberSignUpReq(String name, String email, String password, String phone, MemberType memberType) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.memberType = memberType;
+    }
 }

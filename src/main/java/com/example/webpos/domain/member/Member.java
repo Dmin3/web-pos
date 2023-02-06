@@ -1,6 +1,7 @@
 package com.example.webpos.domain.member;
 
 import com.example.webpos.domain.BaseTimeEntity;
+import com.example.webpos.dto.member.MemberUpdateReq;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,5 +52,12 @@ public class Member extends BaseTimeEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void update(MemberUpdateReq req) {
+        this.name = req.getName();
+        this.password = req.getPassword();
+        this.phone = req.getPhone();
+
     }
 }
