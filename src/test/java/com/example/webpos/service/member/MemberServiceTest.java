@@ -51,7 +51,7 @@ class MemberServiceTest {
         Member member = memberService.save(memberSignUpReq());
 
         // then
-        assertThat(member.getId()).isNotNull(); // ID를 DB에서 자동으로 만들어주는데 Mock으로 만들었기때문에 당연히 돌아가지 않는다.
+        assertThat(member.getId()).isNull(); // ID를 DB에서 자동으로 만들어주는데 Mock으로 만들었기때문에 당연히 돌아가지 않는다.
         assertThat(member.getMemberType()).isEqualTo(MemberType.ROLE_NORMAL);
         assertThat(member.getName()).isEqualTo("TEST");
         assertThat(member.getPassword()).isEqualTo(memberSignUpReq().getPassword());

@@ -1,0 +1,8 @@
+version: "3"
+services:
+  app:
+    container_name: wep-pos
+    image: dmin3/myrepository:web-pos
+    ports:
+      - "8080:8080"
+    restart: always

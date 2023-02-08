@@ -33,6 +33,10 @@ dependencies {
 
 }
 
+jar {
+	enabled = false
+}
+
 def generatedQuerydslDir = 'build/generated/querydsl'
 
 querydsl {
