@@ -5,10 +5,15 @@ import com.example.webpos.domain.member.MemberType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
 @Getter
 @NoArgsConstructor
 public class MemberSignUpReq {
+    @NotNull
     private String name;
+    @Email
     private String email;
     private String password;
     private String phone;

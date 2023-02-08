@@ -1,15 +1,16 @@
 package com.example.webpos.service.member;
 
 import com.example.webpos.domain.member.Member;
+import com.example.webpos.dto.member.MemberRes;
 import com.example.webpos.dto.member.MemberSignUpReq;
 import com.example.webpos.dto.member.MemberUpdateReq;
 
 public interface MemberService {
-    Member get(String name);
+    MemberRes get(String name);
 
-    Member save(MemberSignUpReq req);
+    MemberRes save(MemberSignUpReq req);
 
-    Member update(Long memberId, MemberUpdateReq req);
+    MemberRes update(Long memberId, MemberUpdateReq req);
 
     Boolean delete(Long memberId);
 }
