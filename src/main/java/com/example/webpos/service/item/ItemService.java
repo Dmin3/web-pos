@@ -11,4 +11,6 @@ public interface ItemService {
     ItemRes get(Long itemId);
 
     ItemRes save(Long memberId, ItemSaveReq req);
+
+    Boolean delete(Long itemId);
 }

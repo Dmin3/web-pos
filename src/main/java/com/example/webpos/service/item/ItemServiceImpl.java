@@ -2,6 +2,7 @@ package com.example.webpos.service.item;
 
 import com.example.webpos.common.error.exception.ItemNotFoundException;
 import com.example.webpos.common.error.exception.MemberNotFoundException;
+import com.example.webpos.domain.item.Item;
 import com.example.webpos.dto.item.ItemRes;
 import com.example.webpos.dto.item.ItemSaveReq;
 import com.example.webpos.repository.item.ItemRepository;
@@ -30,9 +31,18 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional
     public ItemRes save(Long memberId, ItemSaveReq req) {
         memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
 
         return itemRepository.save(req.toEntity()).toResult();
+    }
+
+    @Override
+    @Transactional
+    public Boolean delete(Long itemId) {
+        Item item = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
+        itemRepository.delete(item);
+        return true;
     }
 }

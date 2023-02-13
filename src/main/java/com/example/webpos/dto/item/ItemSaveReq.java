@@ -8,13 +8,11 @@ import lombok.NoArgsConstructor;
 @Getter
 public class ItemSaveReq {
     private String name;
-    private Integer amount;
     private Integer price;
 
     public Item toEntity() {
         return new Item(
                 name,
-                amount,
                 price
         );
     }

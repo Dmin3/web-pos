@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    active: dev
   datasource:
     url: jdbc:mysql://localhost:3306/webpos
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,7 +10,7 @@ spring:
     open-in-view: true
 #    show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -24,32 +22,32 @@ logging:
     org.hibernate.SQL: debug
 #    org.hibernamte.type: trace
 
----
-server:
-  ssl:
-    enabled: true
-    key-store-password: 123456
-    key-store: classpath:snackr.p12
-    key-store-type: PKCS12
-spring:
-  profiles:
-    active: local
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    open-in-view: true
-    #    show-sql: true
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 1000
-
-
-logging:
-  level:
-    org.hibernate.SQL: debug
-#    org.hibernamte.type: trace
+#---
+#server:
+#  ssl:
+#    enabled: true
+#    key-store-password: 123456
+#    key-store: classpath:snackr.p12
+#    key-store-type: PKCS12
+#spring:
+#  profiles:
+#    active: local
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    driver-class-name: org.h2.Driver
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    open-in-view: true
+#    #    show-sql: true
+#    hibernate:
+#      ddl-auto: create-drop
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        default_batch_fetch_size: 1000
+#
+#
+#logging:
+#  level:
+#    org.hibernate.SQL: debug
+##    org.hibernamte.type: trace

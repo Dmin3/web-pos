@@ -28,11 +28,13 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    @Transactional
     public MemberRes save(MemberSignUpReq req) {
         return MemberRes.of(memberRepository.save(req.toEntity()));
     }
 
     @Override
+    @Transactional
     public MemberRes update(Long memberId, MemberUpdateReq req) {
         Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
 
@@ -42,6 +44,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    @Transactional
     public Boolean delete(Long memberId) {
         Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
         memberRepository.delete(member);

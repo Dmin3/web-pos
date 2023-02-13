@@ -22,13 +22,10 @@ public class Item extends BaseTimeEntity {
 
     private String name;
 
-    private Integer amount;
-
     private Integer price;
 
-    public Item(String name, Integer amount, Integer price) {
+    public Item(String name, Integer price) {
         this.name = name;
-        this.amount = amount;
         this.price = price;
     }
 
@@ -36,7 +33,6 @@ public class Item extends BaseTimeEntity {
         return new ItemRes(
                 id,
                 name,
-                amount,
                 price
         );
     }
