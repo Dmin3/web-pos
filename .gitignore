@@ -36,5 +36,6 @@ out/
 ### VS Code ###
 .vscode/
 
-### DB ###
+### Other (Custom 추가) ###
 db
+application-jwt.yml

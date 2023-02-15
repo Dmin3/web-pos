@@ -1,6 +1,6 @@
 package com.example.webpos.controller;
 
-import com.example.webpos.dto.orders.OrdersReq;
+import com.example.webpos.dto.orders.OrdersCreateReq;
 import com.example.webpos.dto.orders.OrdersRes;
 import com.example.webpos.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class OrdersController {
     private final OrderService orderService;
 
     @PostMapping()
-    public List<OrdersRes> orders(@RequestBody OrdersReq ordersReq) {
-        return orderService.order(ordersReq);
+    public List<OrdersRes> orders(@RequestBody OrdersCreateReq ordersCreateReq) {
+        return orderService.order(ordersCreateReq);
     }
 }

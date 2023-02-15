@@ -12,10 +12,24 @@ services:
     ports:
       - "3306:3306"
     restart: always
+    networks:
+      - webpos-network
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
 
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - webpos-network
+    environment:
+      TZ: Asia/Seoul
+
+networks:
+  webpos-network:
 #  app:
 #    container_name: wep-pos
 #    image: dmin3/myrepository:web-pos

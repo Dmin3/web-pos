@@ -17,20 +17,9 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
-    public MemberRes get(String name) {
-        Member member = memberRepository.findByName(name);
-
-        if (member != null) {
-            throw new MemberNotFoundException();
-        }
-
-        return null;
-    }
-
-    @Override
-    @Transactional
-    public MemberRes save(MemberSignUpReq req) {
-        return MemberRes.of(memberRepository.save(req.toEntity()));
+    public MemberRes get(Long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+        return MemberRes.of(member);
     }
 
     @Override
@@ -50,6 +39,4 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.delete(member);
         return true;
     }
-
-
 }

@@ -1,5 +1,9 @@
 package com.example.webpos.dto.orders;
 
+import com.example.webpos.domain.item.Item;
+import com.example.webpos.domain.orderitem.OrderItem;
+import com.example.webpos.domain.orderitem.OrderStatus;
+import com.example.webpos.domain.orders.Orders;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,17 +12,23 @@ import lombok.NoArgsConstructor;
 public class OrdersRes {
     private Long id;
     private Long itemId;
-    private Long ordersId;
     private String itemName;
+    private Long ordersId;
+    private OrderStatus orderStatus;
     private Integer amount;
     private Integer price;
 
-    public OrdersRes(Long id, Long itemId, Long ordersId, String itemName, Integer amount, Integer price) {
-        this.id = id;
-        this.itemId = itemId;
-        this.ordersId = ordersId;
-        this.itemName = itemName;
-        this.amount = amount;
-        this.price = price;
+    public OrdersRes(OrderItem orderItem, Item item, Orders orders) {
+        this.id = orderItem.getId();
+        this.itemId = item.getId();
+        this.ordersId = orders.getId();
+        this.itemName = item.getName();
+        this.amount = orderItem.getAmount();
+        this.price = item.getPrice();
+        this.orderStatus = orders.getOrderStatus();
+    }
+
+    public static OrdersRes of(OrderItem orderItem, Item item, Orders orders) {
+        return new OrdersRes(orderItem, item, orders);
     }
 }

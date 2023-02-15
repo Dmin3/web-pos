@@ -4,6 +4,7 @@ import com.example.webpos.domain.member.Member;
 import com.example.webpos.domain.member.MemberType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -15,15 +16,16 @@ public class MemberSignUpReq {
     private String name;
     @Email
     private String email;
+    @NotNull
     private String password;
     private String phone;
     private MemberType memberType;
 
-    public Member toEntity() {
+    public Member toEntity(PasswordEncoder passwordEncoder) {
         return new Member(
                 name,
                 email,
-                password,
+                passwordEncoder.encode(password),
                 phone,
                 memberType
         );

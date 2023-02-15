@@ -5,5 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class OrdersInfo {
+public class OrderItemInfo {
+    private Long itemId;
+    private Integer amount;
 }

@@ -5,8 +5,8 @@ import com.example.webpos.domain.item.Item;
 import com.example.webpos.domain.orderitem.OrderItem;
 import com.example.webpos.domain.orderitem.OrderStatus;
 import com.example.webpos.domain.orders.Orders;
-import com.example.webpos.dto.orders.OrdersInfo;
-import com.example.webpos.dto.orders.OrdersReq;
+import com.example.webpos.dto.orders.OrderItemInfo;
+import com.example.webpos.dto.orders.OrdersCreateReq;
 import com.example.webpos.dto.orders.OrdersRes;
 import com.example.webpos.repository.item.ItemRepository;
 import com.example.webpos.repository.orderitem.OrderItemRepository;
@@ -24,22 +24,26 @@ public class OrderServiceImpl implements OrderService {
     private final OrderItemRepository orderItemRepository;
     private final ItemRepository itemRepository;
 
+
     @Override
     @Transactional
-    public List<OrdersRes> order(OrdersReq ordersReq) {
+    public List<OrdersRes> order(OrdersCreateReq ordersCreateReq) {
         Orders orders = new Orders(OrderStatus.START);
 
         List<OrderItem> orderItems = new ArrayList<>();
 
-        for (OrdersInfo ordersInfo : ordersReq.getOrdersInfoList()) {
+        for (OrderItemInfo orderItemInfo : ordersCreateReq.getOrderItemInfoList()) {
             OrderItem orderItem = new OrderItem();
-            Item item = itemRepository.findById(ordersInfo.getItemId()).orElseThrow(ItemNotFoundException::new);
-            orderItem.setAmount(ordersInfo.getAmount());
+            Item item = itemRepository.findById(orderItemInfo.getItemId()).orElseThrow(ItemNotFoundException::new);
+            orderItem.setAmount(orderItemInfo.getAmount());
             orderItem.addItem(item);
             orderItem.addOrders(orders);
             orderItems.add(orderItem);
         }
 
-        return orderItemRepository.saveAll(orderItems).stream().map(oi -> oi.toResult()).toList();
+        return orderItemRepository.saveAll(orderItems)
+                .stream()
+                .map(orderItem -> OrdersRes.of(orderItem, orderItem.getItem(), orderItem.getOrders()))
+                .toList();
     }
 }

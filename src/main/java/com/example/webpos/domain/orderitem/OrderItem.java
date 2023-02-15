@@ -41,14 +41,4 @@ public class OrderItem extends BaseTimeEntity {
         this.amount = amount;
     }
 
-    public OrdersRes toResult() {
-        return new OrdersRes(
-                id,
-                item.getId(),
-                orders.getId(),
-                item.getName(),
-                amount,
-                item.getPrice()
-        );
-    }
 }
