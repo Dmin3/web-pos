@@ -1,7 +1,7 @@
 package com.example.webpos.item.repository;
 
 import com.example.webpos.item.domain.Item;
-import com.example.webpos.domain.item.QItem;
+import com.example.webpos.item.domain.QItem;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

@@ -22,12 +22,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemRes> list() {
-        return itemRepository.findItemList().stream().map(i -> i.toResult()).toList();
+        return itemRepository.findItemList().stream().map(ItemRes::of).toList();
     }
 
     @Override
     public ItemRes get(Long itemId) {
-        return itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new).toResult();
+        return ItemRes.of(itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new));
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ItemServiceImpl implements ItemService {
     public ItemRes save(Long memberId, ItemSaveReq req) {
         memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
 
-        return itemRepository.save(req.toEntity()).toResult();
+        return ItemRes.of(itemRepository.save(req.toEntity()));
     }
 
     @Override

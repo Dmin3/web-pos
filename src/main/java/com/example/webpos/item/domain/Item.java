@@ -28,13 +28,4 @@ public class Item extends BaseTimeEntity {
         this.name = name;
         this.price = price;
     }
-
-    public ItemRes toResult() {
-        return new ItemRes(
-                id,
-                name,
-                price
-        );
-    }
-
 }

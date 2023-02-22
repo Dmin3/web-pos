@@ -17,8 +17,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public MemberRes get(Long memberId) {
-        Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
-        return MemberRes.of(member);
+        return MemberRes.of(memberRepository.findMember(memberId).orElseThrow(MemberNotFoundException::new));
     }
 
     @Override
@@ -26,9 +25,9 @@ public class MemberServiceImpl implements MemberService {
     public MemberRes update(Long memberId, MemberUpdateReq req) {
         Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
 
-        member.update(req);
+        Member updateMember = member.update(req);
 
-        return MemberRes.of(member);
+        return MemberRes.of(updateMember);
     }
 
     @Override

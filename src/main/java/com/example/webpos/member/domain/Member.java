@@ -52,10 +52,10 @@ public class Member extends BaseTimeEntity {
         this.phone = phone;
     }
 
-    public void update(MemberUpdateReq req) {
+    public Member update(MemberUpdateReq req) {
         this.name = req.getName();
         this.password = req.getPassword();
         this.phone = req.getPhone();
-
+        return this;
     }
 }
