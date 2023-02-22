@@ -1,8 +1,8 @@
 package com.example.webpos.auth;
 
-import com.example.webpos.dto.member.MemberLoginReq;
-import com.example.webpos.dto.member.MemberRes;
-import com.example.webpos.dto.member.MemberSignUpReq;
+import com.example.webpos.member.dto.MemberLoginReq;
+import com.example.webpos.member.dto.MemberRes;
+import com.example.webpos.member.dto.MemberSignUpReq;
 
 public interface AuthService {
     MemberRes signup(MemberSignUpReq memberSignUpReq);

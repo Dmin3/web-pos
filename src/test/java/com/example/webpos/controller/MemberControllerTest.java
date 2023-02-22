@@ -1,12 +1,10 @@
 package com.example.webpos.controller;
 
-import com.example.webpos.common.error.ErrorCode;
 import com.example.webpos.common.error.GlobalExceptionHandler;
-import com.example.webpos.common.error.exception.CommonException;
-import com.example.webpos.common.error.exception.MemberNotFoundException;
-import com.example.webpos.domain.member.MemberType;
-import com.example.webpos.dto.member.MemberSignUpReq;
-import com.example.webpos.service.member.MemberServiceImpl;
+import com.example.webpos.member.domain.MemberType;
+import com.example.webpos.member.dto.MemberSignUpReq;
+import com.example.webpos.member.controller.MemberController;
+import com.example.webpos.member.service.MemberServiceImpl;
 import com.google.gson.Gson;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

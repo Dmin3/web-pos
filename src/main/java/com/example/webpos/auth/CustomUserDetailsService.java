@@ -1,7 +1,7 @@
 package com.example.webpos.auth;
 
-import com.example.webpos.domain.member.Member;
-import com.example.webpos.repository.member.MemberRepository;
+import com.example.webpos.member.domain.Member;
+import com.example.webpos.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

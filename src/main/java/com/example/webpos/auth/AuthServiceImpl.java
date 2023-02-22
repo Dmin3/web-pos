@@ -1,10 +1,10 @@
 package com.example.webpos.auth;
 
-import com.example.webpos.domain.member.Member;
-import com.example.webpos.dto.member.MemberLoginReq;
-import com.example.webpos.dto.member.MemberRes;
-import com.example.webpos.dto.member.MemberSignUpReq;
-import com.example.webpos.repository.member.MemberRepository;
+import com.example.webpos.member.domain.Member;
+import com.example.webpos.member.dto.MemberLoginReq;
+import com.example.webpos.member.dto.MemberRes;
+import com.example.webpos.member.dto.MemberSignUpReq;
+import com.example.webpos.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

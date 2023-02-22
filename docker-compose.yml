@@ -30,6 +30,7 @@ services:
 
 networks:
   webpos-network:
+
 #  app:
 #    container_name: wep-pos
 #    image: dmin3/myrepository:web-pos
