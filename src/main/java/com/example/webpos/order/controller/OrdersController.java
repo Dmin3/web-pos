@@ -4,21 +4,23 @@ import com.example.webpos.order.dto.OrdersCreateReq;
 import com.example.webpos.order.dto.OrdersRes;
 import com.example.webpos.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/orders")
+@RequestMapping("/orders")
 public class OrdersController {
     private final OrderService orderService;
 
+    @GetMapping("/{orderId}")
+    public List<OrdersRes> list(@PathVariable Long orderId){
+        return orderService.list(orderId);
+    }
+
     @PostMapping()
-    public List<OrdersRes> orders(@RequestBody OrdersCreateReq ordersCreateReq) {
-        return orderService.order(ordersCreateReq);
+    public List<OrdersRes> orders(@RequestBody List<OrdersCreateReq> ordersCreateReqList) {
+        return orderService.order(ordersCreateReqList);
     }
 }

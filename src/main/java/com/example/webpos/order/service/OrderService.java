@@ -6,5 +6,7 @@ import com.example.webpos.order.dto.OrdersRes;
 import java.util.List;
 
 public interface OrderService {
-    List<OrdersRes> order(OrdersCreateReq ordersCreateReq);
+    List<OrdersRes> order(List<OrdersCreateReq> ordersCreateReq);
+
+    List<OrdersRes> list(Long orderId);
 }

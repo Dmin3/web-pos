@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 public class CheckController {
-    @GetMapping("/")
+    @GetMapping("/check")
     public String check() {
         log.info("새롭게 배포 완료!!!!!!!!!");
         return "OK";

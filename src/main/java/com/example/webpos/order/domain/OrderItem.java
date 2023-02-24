@@ -5,6 +5,7 @@ import com.example.webpos.item.domain.Item;
 import com.example.webpos.order.domain.Orders;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/item")
+@RequestMapping("/item")
 public class ItemController {
     private final ItemService itemService;
 
@@ -25,7 +25,7 @@ public class ItemController {
     }
 
     @PostMapping("/{memberId}")
-    public ItemRes itemRes(@PathVariable Long memberId, @RequestBody ItemSaveReq req) {
+    public ItemRes create(@PathVariable Long memberId, @RequestBody ItemSaveReq req) {
         return itemService.save(memberId, req);
     }
 
