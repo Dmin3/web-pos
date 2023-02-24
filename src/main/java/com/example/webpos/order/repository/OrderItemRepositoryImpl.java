@@ -1,7 +1,6 @@
 package com.example.webpos.order.repository;
 
 import com.example.webpos.item.domain.QItem;
-import com.example.webpos.member.domain.QMember;
 import com.example.webpos.order.domain.OrderItem;
 import com.example.webpos.order.domain.QOrderItem;
 import com.example.webpos.order.domain.QOrders;

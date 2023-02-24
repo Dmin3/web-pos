@@ -21,8 +21,8 @@ public class ItemServiceImpl implements ItemService {
     private final MemberRepository memberRepository;
 
     @Override
-    public List<ItemRes> list() {
-        return itemRepository.findItemList().stream().map(ItemRes::of).toList();
+    public List<ItemRes> list(Long memberId) {
+        return itemRepository.findItemList(memberId).stream().map(ItemRes::of).toList();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ItemServiceImpl implements ItemService {
     public ItemRes save(Long memberId, ItemSaveReq req) {
         memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
 
-        return ItemRes.of(itemRepository.save(req.toEntity()));
+        return ItemRes.of(itemRepository.save(req.toEntity(memberId)));
     }
 
     @Override

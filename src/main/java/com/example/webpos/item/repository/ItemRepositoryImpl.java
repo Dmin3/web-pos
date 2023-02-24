@@ -10,12 +10,14 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class ItemRepositoryImpl implements ItemRepositoryCustom{
+public class ItemRepositoryImpl implements ItemRepositoryCustom {
     private final JPAQueryFactory query;
 
     @Override
-    public List<Item> findItemList() {
+    public List<Item> findItemList(Long memberId) {
         QItem item = QItem.item;
-        return query.selectFrom(item).fetch();
+        return query.selectFrom(item)
+                .where(item.memberId.eq(memberId))
+                .fetch();
     }
 }

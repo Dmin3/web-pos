@@ -6,7 +6,7 @@ import com.example.webpos.item.dto.ItemSaveReq;
 import java.util.List;
 
 public interface ItemService {
-    List<ItemRes> list();
+    List<ItemRes> list(Long memberId);
 
     ItemRes get(Long itemId);
 

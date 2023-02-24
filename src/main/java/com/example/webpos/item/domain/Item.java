@@ -23,8 +23,11 @@ public class Item extends BaseTimeEntity {
 
     private Integer price;
 
-    public Item(String name, Integer price) {
+    private Long memberId;
+
+    public Item(String name, Integer price, Long memberId) {
         this.name = name;
         this.price = price;
+        this.memberId = memberId;
     }
 }

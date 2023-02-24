@@ -1,5 +1,6 @@
 package com.example.webpos.item.controller;
 
+import com.example.webpos.auth.SecurityUtil;
 import com.example.webpos.item.dto.ItemRes;
 import com.example.webpos.item.dto.ItemSaveReq;
 import com.example.webpos.item.service.ItemService;
@@ -16,7 +17,8 @@ public class ItemController {
 
     @GetMapping
     public List<ItemRes> list() {
-        return itemService.list();
+        Long currentMemberId = SecurityUtil.getCurrentMemberId();
+        return itemService.list(currentMemberId);
     }
 
     @GetMapping("/{itemId}")
@@ -24,13 +26,19 @@ public class ItemController {
         return itemService.get(itemId);
     }
 
-    @PostMapping("/{memberId}")
-    public ItemRes create(@PathVariable Long memberId, @RequestBody ItemSaveReq req) {
-        return itemService.save(memberId, req);
+    @PostMapping()
+    public ItemRes create(@RequestBody ItemSaveReq req) {
+        Long currentMemberId = SecurityUtil.getCurrentMemberId();
+        return itemService.save(currentMemberId, req);
     }
 
     @PatchMapping("/{itemId}")
-    public ItemRes modify(@PathVariable Long itemId){
+    public ItemRes modify(@PathVariable Long itemId) {
         return null;
+    }
+
+    @DeleteMapping("/{itemId}")
+    public Boolean remove(@PathVariable Long itemId) {
+        return itemService.delete(itemId);
     }
 }

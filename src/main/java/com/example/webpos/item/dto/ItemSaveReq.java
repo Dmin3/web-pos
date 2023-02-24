@@ -10,10 +10,11 @@ public class ItemSaveReq {
     private String name;
     private Integer price;
 
-    public Item toEntity() {
+    public Item toEntity(Long memberId) {
         return new Item(
                 name,
-                price
+                price,
+                memberId
         );
     }
 }
