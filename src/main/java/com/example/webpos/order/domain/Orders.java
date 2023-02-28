@@ -17,18 +17,23 @@ public class Orders {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private OrderStatus orderStatus;
 
+    @Column(nullable = false)
+    private Integer peopleCount;
 
-    public static Orders createOrders(OrderStatus orderStatus) {
-        return new Orders(orderStatus);
+    public static Orders createOrders(Member member, Integer peopleCount) {
+        return new Orders(member, OrderStatus.START, peopleCount);
     }
 
-    public Orders(OrderStatus orderStatus) {
+    public Orders(Member member, OrderStatus orderStatus, Integer peopleCount) {
+        this.member = member;
         this.orderStatus = orderStatus;
+        this.peopleCount = peopleCount;
     }
 }

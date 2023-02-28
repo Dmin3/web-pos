@@ -15,6 +15,7 @@ public class OrdersRes {
     private String itemName;
     private Long ordersId;
     private OrderStatus orderStatus;
+    private Integer peopleCount;
     private Integer amount;
     private Integer price;
 
@@ -26,6 +27,7 @@ public class OrdersRes {
         this.amount = orderItem.getAmount();
         this.price = item.getPrice();
         this.orderStatus = orders.getOrderStatus();
+        this.peopleCount = orders.getPeopleCount();
     }
 
     public static OrdersRes of(OrderItem orderItem, Item item, Orders orders) {

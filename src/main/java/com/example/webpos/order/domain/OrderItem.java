@@ -2,10 +2,8 @@ package com.example.webpos.order.domain;
 
 import com.example.webpos.common.BaseTimeEntity;
 import com.example.webpos.item.domain.Item;
-import com.example.webpos.order.domain.Orders;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -27,11 +25,11 @@ public class OrderItem extends BaseTimeEntity {
 
     private Integer amount;
 
-    public void addItem(Item item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 
-    public void addOrders(Orders orders) {
+    public void setOrders(Orders orders) {
         this.orders = orders;
     }
 

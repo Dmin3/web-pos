@@ -1,4 +1,4 @@
-package com.example.webpos.controller;
+package com.example.webpos.member.controller;
 
 import com.example.webpos.common.error.GlobalExceptionHandler;
 import com.example.webpos.member.domain.MemberType;

@@ -8,11 +8,23 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class OrdersCreateReq {
-    private Long itemId;
-    private int amount;
+    private List<ItemInfo> itemInfos;
+    private Integer peopleCount;
 
-    public OrdersCreateReq(Long itemId, int amount) {
-        this.itemId = itemId;
-        this.amount = amount;
+    public OrdersCreateReq(List<ItemInfo> itemInfos, Integer peopleCount) {
+        this.itemInfos = itemInfos;
+        this.peopleCount = peopleCount;
+    }
+
+    @Getter
+    @NoArgsConstructor
+    public static class ItemInfo {
+        private Long itemId;
+        private int amount;
+
+        public ItemInfo(Long itemId, int amount) {
+            this.itemId = itemId;
+            this.amount = amount;
+        }
     }
 }

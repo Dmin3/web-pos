@@ -22,13 +22,13 @@ public class MemberSignUpReq {
     private MemberType memberType;
 
     public Member toEntity(PasswordEncoder passwordEncoder) {
-        return new Member(
-                name,
-                email,
-                passwordEncoder.encode(password),
-                phone,
-                memberType
-        );
+        return Member.builder()
+                .name(name)
+                .email(email)
+                .password(passwordEncoder.encode(password))
+                .phone(phone)
+                .memberType(memberType)
+                .build();
     }
 
     public MemberSignUpReq(String name, String email, String password, String phone, MemberType memberType) {

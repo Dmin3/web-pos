@@ -10,6 +10,11 @@ public class ItemSaveReq {
     private String name;
     private Integer price;
 
+    public ItemSaveReq(String name, Integer price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public Item toEntity(Long memberId) {
         return new Item(
                 name,

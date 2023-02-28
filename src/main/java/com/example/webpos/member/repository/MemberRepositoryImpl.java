@@ -17,6 +17,6 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
     public Optional<Member> findMember(Long memberId) {
         QMember member = QMember.member;
         // null 인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성한다.
-        return Optional.ofNullable(query.selectFrom(member).fetchOne());
+        return Optional.ofNullable(query.selectFrom(member).where(member.id.eq(memberId)).fetchOne());
     }
 }

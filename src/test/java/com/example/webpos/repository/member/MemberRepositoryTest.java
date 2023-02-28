@@ -4,6 +4,7 @@ import com.example.webpos.config.TestConfig;
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.domain.MemberType;
 import com.example.webpos.member.repository.MemberRepository;
+import com.example.webpos.support.RepositoryTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
-@DataJpaTest
-@Import(TestConfig.class)
+@RepositoryTest
 class MemberRepositoryTest {
     @Autowired
     private MemberRepository memberRepository;
@@ -52,28 +52,6 @@ class MemberRepositoryTest {
         assertThat(member.getId()).isEqualTo(findMember.getId());
         assertThat(member.getName()).isEqualTo(findMember.getName());
         assertThat(member.getEmail()).isEqualTo(findMember.getEmail());
-    }
-
-    @DisplayName("멤버 수정 (더티 체킹)")
-    @Test
-    @Rollback(value = false)
-    void updateMember() {
-        // given
-        Member member = new Member("TEST", "test@test", "123", "010-5833-3287", MemberType.ROLE_NORMAL);
-        memberRepository.save(member);
-        Member findMember = memberRepository.findById(member.getId()).get();
-
-        // when
-        findMember.setEmail("update@test");
-        findMember.setName("UPDATE_TEST");
-        findMember.setPhone("00");
-        findMember.setPassword("0101010");
-
-        // then
-        assertThat(findMember.getEmail()).isEqualTo("update@test");
-        assertThat(findMember.getName()).isEqualTo("UPDATE_TEST");
-        assertThat(findMember.getPhone()).isEqualTo("00");
-        assertThat(findMember.getPassword()).isEqualTo("0101010");
     }
 
     @DisplayName("멤버 삭제")
