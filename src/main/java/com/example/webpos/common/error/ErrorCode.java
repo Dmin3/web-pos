@@ -8,7 +8,8 @@ public enum ErrorCode {
     MEMBER_NOT_FOUND(404, "M01", "존재하지 않는 유저입니다."),
 
     // ITEM
-    ITEM_NOT_FOUND(404, "I01", "존재하지 않는 아이템 입니다.")
+    ITEM_NOT_FOUND(404, "I01", "존재하지 않는 아이템 입니다."),
+    ITEM_EMPTY(400,"I02", "상품정보를 선택해주세요.")
 
 
     ;

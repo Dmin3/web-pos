@@ -1,5 +1,6 @@
 package com.example.webpos.order.service;
 
+import com.example.webpos.common.error.exception.ItemInfoEmptyException;
 import com.example.webpos.item.domain.Item;
 import com.example.webpos.item.repository.ItemRepository;
 import com.example.webpos.member.domain.Member;
@@ -15,9 +16,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @RepositoryTest
@@ -72,6 +75,19 @@ class OrderServiceImplTest {
         assertAll(
                 () -> assertThat(ordersRes.size()).isEqualTo(itemInfos.size())
         );
+    }
+
+    @Test
+    void 주문_예외(){
+        //given
+        itemInfos = Collections.emptyList();
+
+        //when
+
+        //then
+        assertThatThrownBy(
+                () -> orderService.order(member.getId(), new OrdersCreateReq(itemInfos, 3))
+        ).isInstanceOf(ItemInfoEmptyException.class);
     }
 
     @Test

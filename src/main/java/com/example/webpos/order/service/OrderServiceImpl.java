@@ -1,9 +1,9 @@
 package com.example.webpos.order.service;
 
+import com.example.webpos.common.error.exception.ItemInfoEmptyException;
 import com.example.webpos.common.error.exception.ItemNotFoundException;
 import com.example.webpos.common.error.exception.MemberNotFoundException;
 import com.example.webpos.item.domain.Item;
-import com.example.webpos.item.dto.ItemRes;
 import com.example.webpos.item.repository.ItemRepository;
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.repository.MemberRepository;
@@ -47,6 +47,8 @@ public class OrderServiceImpl implements OrderService {
     public List<OrdersRes> order(Long currentMemberId, OrdersCreateReq ordersCreateReqList) {
         Member member = findMember(currentMemberId);
 
+        validateItemInfo(ordersCreateReqList.getItemInfos());
+
         Orders orders = Orders.createOrders(member, ordersCreateReqList.getPeopleCount());
 
         List<OrderItem> orderItems = new ArrayList<>();
@@ -68,5 +70,11 @@ public class OrderServiceImpl implements OrderService {
 
     private Member findMember(Long memberId) {
         return memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+    }
+
+    private void validateItemInfo(List<OrdersCreateReq.ItemInfo> itemInfos) {
+        if (itemInfos.isEmpty()) {
+            throw new ItemInfoEmptyException();
+        }
     }
 }
