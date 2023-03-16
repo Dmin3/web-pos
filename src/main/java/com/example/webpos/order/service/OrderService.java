@@ -9,5 +9,7 @@ import java.util.List;
 public interface OrderService {
     List<OrdersRes> order(Long currentMemberId, OrdersCreateReq ordersCreateReq);
 
-    OrdersInfo list(Long orderId);
+    OrdersInfo get(Long orderId);
+
+    List<OrdersInfo> list();
 }

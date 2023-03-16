@@ -16,9 +16,14 @@ import java.util.List;
 public class OrdersController {
     private final OrderService orderService;
 
+    @GetMapping()
+    public List<OrdersInfo> list() {
+        return orderService.list();
+    }
+
     @GetMapping("/{orderId}")
-    public OrdersInfo list(@PathVariable Long orderId) {
-        return orderService.list(orderId);
+    public OrdersInfo get(@PathVariable Long orderId) {
+        return orderService.get(orderId);
     }
 
     @PostMapping()

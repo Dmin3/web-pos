@@ -31,13 +31,17 @@ public class OrderServiceImpl implements OrderService {
     private final ItemRepository itemRepository;
 
     @Override
-    public OrdersInfo list(Long orderId) {
-        Orders orders = ordersRepository.findById(orderId).orElse(null);
+    public List<OrdersInfo> list() {
+        return ordersRepository.findAll().stream().map(orders -> OrdersInfo.of(orders)).toList();
+    }
+
+    @Override
+    public OrdersInfo get(Long orderId) {
+        Orders orders = ordersRepository.findById(orderId).orElseGet(null);
 
         List<OrderItem> orderItemList = orderItemRepository.findByOrder(orderId);
 
         List<OrdersInfo.ItemInfo> itemInfos = orderItemList.stream().map(orderItem -> OrdersInfo.ItemInfo.of(orderItem.getItem(), orderItem.getAmount())).toList();
-
 
         return OrdersInfo.of(orders, itemInfos);
     }

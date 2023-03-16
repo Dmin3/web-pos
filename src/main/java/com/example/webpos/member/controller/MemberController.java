@@ -2,14 +2,10 @@ package com.example.webpos.member.controller;
 
 import com.example.webpos.auth.SecurityUtil;
 import com.example.webpos.member.dto.MemberRes;
+import com.example.webpos.member.dto.MemberUpdateReq;
 import com.example.webpos.member.service.MemberService;
-import com.querydsl.core.Tuple;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,14 +13,22 @@ import java.util.List;
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping("/test")
-    public List<MemberRes> findAll() {
-        return memberService.findAllMember();
-    }
-
     @GetMapping("/me")
     public MemberRes me() {
         Long memberId = SecurityUtil.getCurrentMemberId();
         return memberService.get(memberId);
+    }
+
+    @PatchMapping()
+    public MemberRes update(
+            @RequestBody MemberUpdateReq memberUpdateReq
+    ) {
+        Long memberId = SecurityUtil.getCurrentMemberId();
+        return memberService.update(memberId, memberUpdateReq);
+    }
+
+    @DeleteMapping
+    public Boolean delete() {
+        return memberService.delete(SecurityUtil.getCurrentMemberId());
     }
 }

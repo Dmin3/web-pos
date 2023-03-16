@@ -21,38 +21,11 @@ public class MemberRes {
         return new MemberRes(member);
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setMemberType(MemberType memberType) {
-        this.memberType = memberType;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public MemberRes(Member member){
         memberId = member.getId();
         nickname= member.getName();
         email = member.getEmail();
         memberType = member.getMemberType();
         phone = member.getPhone();
-    }
-
-    @QueryProjection
-    public MemberRes(Long id, String name, String email) {
-        this.memberId = id;
-        this.nickname = name;
-        this.email = email;
     }
 }

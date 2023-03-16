@@ -1,19 +1,20 @@
 package com.example.webpos.order.domain;
 
+import com.example.webpos.common.BaseTimeEntity;
 import com.example.webpos.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Orders {
+public class Orders extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "orders_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

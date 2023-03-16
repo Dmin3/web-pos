@@ -6,6 +6,7 @@ import com.example.webpos.member.dto.MemberRes;
 import com.example.webpos.member.dto.MemberSignUpReq;
 import com.example.webpos.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -16,23 +17,27 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class AuthServiceImpl implements AuthService{
+public class AuthServiceImpl implements AuthService {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
 
+
     @Override
     @Transactional
     public MemberRes signup(MemberSignUpReq memberSignUpReq) {
-        if (memberRepository.existsByEmail(memberSignUpReq.getEmail())){
+        if (memberRepository.existsByEmail(memberSignUpReq.getEmail())) {
             throw new RuntimeException("이미 가입 되어 있는 유저입니다.");
         }
 
         Member member = memberSignUpReq.toEntity(passwordEncoder);
 
-        return MemberRes.of(memberRepository.save(member));
+        memberRepository.save(member);
+
+
+        return MemberRes.of(member);
     }
 
     @Override

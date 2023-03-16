@@ -8,8 +8,6 @@ import com.example.webpos.member.dto.MemberRes;
 import com.example.webpos.member.dto.MemberSignUpReq;
 import com.example.webpos.member.dto.MemberUpdateReq;
 import com.example.webpos.member.repository.MemberRepository;
-import com.example.webpos.member.service.MemberService;
-import com.example.webpos.member.service.MemberServiceImpl;
 import com.example.webpos.support.RepositoryTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,8 +46,8 @@ class MemberServiceTest {
 
         //then
         assertAll(
-                () -> assertThat(findMember.getId()).isEqualTo(member.getId()),
-                () -> assertThat(findMember.getName()).isEqualTo(member.getName())
+                () -> assertThat(findMember.getMemberId()).isEqualTo(member.getId()),
+                () -> assertThat(findMember.getNickname()).isEqualTo(member.getName())
         );
 
     }
@@ -75,7 +73,7 @@ class MemberServiceTest {
 
         //then
         assertAll(
-                () -> assertThat(req.getName()).isEqualTo(res.getName()),
+                () -> assertThat(req.getName()).isEqualTo(res.getNickname()),
                 () -> assertThat(req.getPhone()).isEqualTo(res.getPhone())
         );
     }

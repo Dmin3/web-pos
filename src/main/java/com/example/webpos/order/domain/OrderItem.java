@@ -1,6 +1,5 @@
 package com.example.webpos.order.domain;
 
-import com.example.webpos.common.BaseTimeEntity;
 import com.example.webpos.item.domain.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
-public class OrderItem extends BaseTimeEntity {
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

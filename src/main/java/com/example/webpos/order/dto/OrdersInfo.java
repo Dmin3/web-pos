@@ -21,11 +21,21 @@ public class OrdersInfo {
         return new OrdersInfo(orders, itemInfos);
     }
 
+    public static OrdersInfo of(Orders orders) {
+        return new OrdersInfo(orders);
+    }
+
     public OrdersInfo(Orders orders, List<ItemInfo> itemInfos) {
         this.orderId = orders.getId();
         this.peopleCount = orders.getPeopleCount();
         this.orderStatus = orders.getOrderStatus();
         this.itemInfos = itemInfos;
+    }
+
+    public OrdersInfo(Orders orders) {
+        this.orderId = orders.getId();
+        this.peopleCount = orders.getPeopleCount();
+        this.orderStatus = orders.getOrderStatus();
     }
 
     @Getter

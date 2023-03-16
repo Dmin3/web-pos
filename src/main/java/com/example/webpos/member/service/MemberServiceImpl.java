@@ -5,7 +5,6 @@ import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.dto.MemberRes;
 import com.example.webpos.member.dto.MemberUpdateReq;
 import com.example.webpos.member.repository.MemberRepository;
-import com.querydsl.core.Tuple;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

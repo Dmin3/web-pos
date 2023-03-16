@@ -91,13 +91,27 @@ class OrderServiceImplTest {
     }
 
     @Test
+    void 주문내역_전체조회(){
+        //given
+        orderService.order(member.getId(), new OrdersCreateReq(itemInfos, 3));
+        orderService.order(member.getId(), new OrdersCreateReq(itemInfos, 3));
+        orderService.order(member.getId(), new OrdersCreateReq(itemInfos, 3));
+
+        //when
+        List<OrdersInfo> list = orderService.list();
+
+        //then
+        assertThat(list.size()).isEqualTo(3);
+    }
+
+    @Test
     void 주문내역_조회() {
         //given
         List<OrdersRes> ordersRes = orderService.order(member.getId(), new OrdersCreateReq(itemInfos, 3));
         Long orderId = ordersRes.get(0).getOrdersId();
 
         //when
-        OrdersInfo ordersInfo = orderService.list(orderId);
+        OrdersInfo ordersInfo = orderService.get(orderId);
 
         //then
         assertAll(
