@@ -1,17 +1,18 @@
 package com.example.webpos.order.service;
 
-import com.example.webpos.common.error.exception.ItemInfoEmptyException;
-import com.example.webpos.common.error.exception.ItemNotFoundException;
-import com.example.webpos.common.error.exception.MemberNotFoundException;
 import com.example.webpos.item.domain.Item;
+import com.example.webpos.item.exception.ItemInfoEmptyException;
+import com.example.webpos.item.exception.ItemNotFoundException;
 import com.example.webpos.item.repository.ItemRepository;
 import com.example.webpos.member.domain.Member;
+import com.example.webpos.member.exception.MemberNotFoundException;
 import com.example.webpos.member.repository.MemberRepository;
 import com.example.webpos.order.domain.OrderItem;
 import com.example.webpos.order.domain.Orders;
 import com.example.webpos.order.dto.OrdersCreateReq;
 import com.example.webpos.order.dto.OrdersInfo;
 import com.example.webpos.order.dto.OrdersRes;
+import com.example.webpos.order.exception.OrdersNotFoundException;
 import com.example.webpos.order.repository.OrderItemRepository;
 import com.example.webpos.order.repository.OrdersRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,13 +32,13 @@ public class OrderServiceImpl implements OrderService {
     private final ItemRepository itemRepository;
 
     @Override
-    public List<OrdersInfo> list() {
-        return ordersRepository.findAll().stream().map(orders -> OrdersInfo.of(orders)).toList();
+    public List<OrdersInfo> list(Long memberId) {
+        return null;
     }
 
     @Override
     public OrdersInfo get(Long orderId) {
-        Orders orders = ordersRepository.findById(orderId).orElseGet(null);
+        Orders orders = ordersRepository.findById(orderId).orElseThrow(OrdersNotFoundException::new);
 
         List<OrderItem> orderItemList = orderItemRepository.findByOrder(orderId);
 

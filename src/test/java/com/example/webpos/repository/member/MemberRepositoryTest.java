@@ -33,6 +33,15 @@ class MemberRepositoryTest {
         assertThat(member.getName()).isEqualTo(saveMember.getName());
         assertThat(member.getEmail()).isEqualTo(saveMember.getEmail());
     }
+    
+    private void hello() {
+        System.out.println("존재하면 프린트");
+    }
+
+    private Member hello1(Member member) {
+        System.out.println("존재하지 않으면 나를 실행해!");
+        return member;
+    }
 
     @DisplayName("멤버 조회")
     @Test

@@ -2,7 +2,7 @@ package com.example.webpos.member.repository;
 
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.dto.MemberRes;
-import com.example.webpos.member.dto.QMemberRes;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -23,15 +23,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
         return Optional.ofNullable(jpaQueryFactory.selectFrom(member).where(member.id.eq(memberId)).fetchOne());
     }
 
-    @Override
-    public List<MemberRes> findAllMember() {
-        return jpaQueryFactory.select(
-                new QMemberRes(
-                        member.id,
-                        member.name,
-                        member.email
-                )).from(member).fetch();
-    }
+
 
 
 }

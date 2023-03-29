@@ -9,7 +9,10 @@ public enum ErrorCode {
 
     // ITEM
     ITEM_NOT_FOUND(404, "I01", "존재하지 않는 아이템 입니다."),
-    ITEM_EMPTY(400,"I02", "상품정보를 선택해주세요.")
+    ITEM_EMPTY(400,"I02", "상품정보를 선택해주세요."),
+
+    // ORDERS
+    ORDERS_NOT_FOUND(404, "O01", "존재하지 않는 주문입니다.")
 
 
     ;

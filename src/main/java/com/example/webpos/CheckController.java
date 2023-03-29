@@ -13,9 +13,4 @@ public class CheckController {
         log.info("새롭게 배포 완료!!!!!!!!!");
         return "OK";
     }
-
-    @GetMapping("/test")
-    public String check2() {
-        return "Hello";
-    }
 }

@@ -1,6 +1,6 @@
 package com.example.webpos.item.service;
 
-import com.example.webpos.common.error.exception.ItemNotFoundException;
+import com.example.webpos.item.exception.ItemNotFoundException;
 import com.example.webpos.item.domain.Item;
 import com.example.webpos.item.dto.ItemRes;
 import com.example.webpos.item.dto.ItemSaveReq;

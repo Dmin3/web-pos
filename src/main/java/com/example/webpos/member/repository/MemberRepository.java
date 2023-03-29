@@ -1,5 +1,6 @@
 package com.example.webpos.member.repository;
 
+import com.example.webpos.member.exception.MemberNotFoundException;
 import com.example.webpos.member.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,4 +10,8 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberRep
     Optional<Member> findByEmail(String email);
 
     Boolean existsByEmail(String email);
+
+    default Member getById(final Long id) {
+        return findById(id).orElseThrow(MemberNotFoundException::new);
+    }
 }

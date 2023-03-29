@@ -6,6 +6,8 @@ import com.example.webpos.order.dto.OrdersInfo;
 import com.example.webpos.order.dto.OrdersRes;
 import com.example.webpos.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,18 +19,19 @@ public class OrdersController {
     private final OrderService orderService;
 
     @GetMapping()
-    public List<OrdersInfo> list() {
-        return orderService.list();
+    public ResponseEntity<List<OrdersInfo>> list() {
+        Long memberId = SecurityUtil.getCurrentMemberId();
+        return ResponseEntity.ok(orderService.list(memberId));
     }
 
     @GetMapping("/{orderId}")
-    public OrdersInfo get(@PathVariable Long orderId) {
-        return orderService.get(orderId);
+    public ResponseEntity<OrdersInfo> get(@PathVariable Long orderId) {
+        return ResponseEntity.ok(orderService.get(orderId));
     }
 
     @PostMapping()
-    public List<OrdersRes> orders(@RequestBody OrdersCreateReq ordersCreateReq) {
+    public ResponseEntity<List<OrdersRes>> orders(@RequestBody OrdersCreateReq ordersCreateReq) {
         Long currentMemberId = SecurityUtil.getCurrentMemberId();
-        return orderService.order(currentMemberId, ordersCreateReq);
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.order(currentMemberId, ordersCreateReq));
     }
 }

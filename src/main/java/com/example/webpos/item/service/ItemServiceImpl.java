@@ -1,11 +1,10 @@
 package com.example.webpos.item.service;
 
-import com.example.webpos.common.error.exception.ItemNotFoundException;
-import com.example.webpos.common.error.exception.MemberNotFoundException;
 import com.example.webpos.item.domain.Item;
 import com.example.webpos.item.dto.ItemRes;
 import com.example.webpos.item.dto.ItemSaveReq;
 import com.example.webpos.item.repository.ItemRepository;
+import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,21 +26,21 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemRes get(Long itemId) {
-        return ItemRes.of(itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new));
+        return ItemRes.of(itemRepository.getById(itemId));
     }
 
     @Override
     @Transactional
     public ItemRes save(Long memberId, ItemSaveReq req) {
-        memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+        Member member = memberRepository.getById(memberId);
 
-        return ItemRes.of(itemRepository.save(req.toEntity(memberId)));
+        return ItemRes.of(itemRepository.save(req.toEntity(member.getId())));
     }
 
     @Override
     @Transactional
     public Boolean delete(Long itemId) {
-        Item item = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
+        Item item = itemRepository.getById(itemId);
         itemRepository.delete(item);
         return true;
     }

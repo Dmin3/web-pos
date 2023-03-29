@@ -1,7 +1,7 @@
 package com.example.webpos.member.service;
 
 
-import com.example.webpos.common.error.exception.MemberNotFoundException;
+import com.example.webpos.member.exception.MemberNotFoundException;
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.domain.MemberType;
 import com.example.webpos.member.dto.MemberRes;

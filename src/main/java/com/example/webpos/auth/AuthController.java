@@ -4,6 +4,7 @@ import com.example.webpos.member.dto.MemberLoginReq;
 import com.example.webpos.member.dto.MemberRes;
 import com.example.webpos.member.dto.MemberSignUpReq;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<MemberRes> signup(@RequestBody MemberSignUpReq memberSignUpReq) {
-        return ResponseEntity.ok(authService.signup(memberSignUpReq));
+        return ResponseEntity.status(HttpStatus.CREATED).body(authService.signup(memberSignUpReq));
     }
 
     @PostMapping("/login")

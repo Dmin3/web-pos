@@ -1,6 +1,6 @@
 package com.example.webpos.member.service;
 
-import com.example.webpos.common.error.exception.MemberNotFoundException;
+import com.example.webpos.member.exception.MemberNotFoundException;
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.dto.MemberRes;
 import com.example.webpos.member.dto.MemberUpdateReq;
@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public List<MemberRes> findAllMember() {
-        return memberRepository.findAllMember();
+        return memberRepository.findAll().stream().map(member -> MemberRes.of(member)).toList();
     }
 
     @Override

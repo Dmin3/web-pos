@@ -6,9 +6,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @NoArgsConstructor
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MemberRes {
     private Long memberId;

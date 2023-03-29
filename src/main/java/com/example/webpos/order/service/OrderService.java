@@ -11,5 +11,5 @@ public interface OrderService {
 
     OrdersInfo get(Long orderId);
 
-    List<OrdersInfo> list();
+    List<OrdersInfo> list(Long memberId);
 }

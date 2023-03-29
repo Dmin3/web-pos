@@ -1,6 +1,6 @@
 package com.example.webpos.order.service;
 
-import com.example.webpos.common.error.exception.ItemInfoEmptyException;
+import com.example.webpos.item.exception.ItemInfoEmptyException;
 import com.example.webpos.item.domain.Item;
 import com.example.webpos.item.repository.ItemRepository;
 import com.example.webpos.member.domain.Member;
