@@ -1,6 +1,5 @@
 package com.example.webpos.common.error;
 
-import com.example.webpos.common.error.exception.CommonException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

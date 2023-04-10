@@ -1,13 +1,10 @@
 package com.example.webpos.member.repository;
 
 import com.example.webpos.member.domain.Member;
-import com.example.webpos.member.dto.MemberRes;
-import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import static com.example.webpos.member.domain.QMember.member;

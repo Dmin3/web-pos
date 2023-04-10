@@ -1,16 +1,18 @@
 package com.example.webpos;
 
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class CheckController {
+
     @GetMapping("/check")
-    public String check() {
-        log.info("새롭게 배포 완료!!!!!!!!!");
+    public String check(String word) {
         return "OK";
     }
 }

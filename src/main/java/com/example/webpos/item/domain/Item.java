@@ -1,12 +1,9 @@
 package com.example.webpos.item.domain;
 
 import com.example.webpos.common.BaseTimeEntity;
-
-import com.example.webpos.item.dto.ItemRes;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 

@@ -1,9 +1,9 @@
 package com.example.webpos.member.service;
 
-import com.example.webpos.member.exception.MemberNotFoundException;
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.dto.MemberRes;
 import com.example.webpos.member.dto.MemberUpdateReq;
+import com.example.webpos.member.exception.MemberNotFoundException;
 import com.example.webpos.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

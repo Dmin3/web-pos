@@ -1,12 +1,12 @@
 package com.example.webpos.member.service;
 
 
-import com.example.webpos.member.exception.MemberNotFoundException;
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.domain.MemberType;
 import com.example.webpos.member.dto.MemberRes;
 import com.example.webpos.member.dto.MemberSignUpReq;
 import com.example.webpos.member.dto.MemberUpdateReq;
+import com.example.webpos.member.exception.MemberNotFoundException;
 import com.example.webpos.member.repository.MemberRepository;
 import com.example.webpos.support.RepositoryTest;
 import org.junit.jupiter.api.BeforeEach;

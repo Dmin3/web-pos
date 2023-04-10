@@ -3,7 +3,6 @@ package com.example.webpos.member.dto;
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.domain.MemberType;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;

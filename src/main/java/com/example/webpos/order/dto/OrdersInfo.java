@@ -1,7 +1,6 @@
 package com.example.webpos.order.dto;
 
 import com.example.webpos.item.domain.Item;
-import com.example.webpos.order.domain.OrderItem;
 import com.example.webpos.order.domain.OrderStatus;
 import com.example.webpos.order.domain.Orders;
 import lombok.Getter;
