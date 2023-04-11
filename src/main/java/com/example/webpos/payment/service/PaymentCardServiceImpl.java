@@ -18,6 +18,6 @@ public class PaymentCardServiceImpl implements PaymentService {
 
     @Override
     public PaymentType getPaymentType() {
-        return null;
+        return PaymentType.CARD;
     }
 }
