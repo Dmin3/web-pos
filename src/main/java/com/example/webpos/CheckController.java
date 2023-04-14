@@ -4,6 +4,7 @@ package com.example.webpos;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,5 +15,12 @@ public class CheckController {
     @GetMapping("/check")
     public String check(String word) {
         return "OK";
+    }
+
+    @GetMapping("/test")
+    public String test(@RequestBody TestRequest request) {
+        request.validationTagNickname();
+
+        return "tagNickName = " + request.getTagNickname() + " " + "content : " + request.getContent();
     }
 }
