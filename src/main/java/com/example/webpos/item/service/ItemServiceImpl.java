@@ -1,5 +1,6 @@
 package com.example.webpos.item.service;
 
+import com.example.webpos.event.ItemEventDto;
 import com.example.webpos.item.domain.Item;
 import com.example.webpos.item.dto.ItemRes;
 import com.example.webpos.item.dto.ItemSaveReq;
@@ -7,6 +8,8 @@ import com.example.webpos.item.repository.ItemRepository;
 import com.example.webpos.member.domain.Member;
 import com.example.webpos.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +18,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Slf4j
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final MemberRepository memberRepository;

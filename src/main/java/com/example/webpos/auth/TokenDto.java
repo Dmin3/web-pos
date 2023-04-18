@@ -2,8 +2,10 @@ package com.example.webpos.auth;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class TokenDto {
     private String grantType;
     private String accessToken;

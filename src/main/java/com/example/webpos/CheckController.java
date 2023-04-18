@@ -16,11 +16,4 @@ public class CheckController {
     public String check(String word) {
         return "OK";
     }
-
-    @GetMapping("/test")
-    public String test(@RequestBody TestRequest request) {
-        request.validationTagNickname();
-
-        return "tagNickName = " + request.getTagNickname() + " " + "content : " + request.getContent();
-    }
 }

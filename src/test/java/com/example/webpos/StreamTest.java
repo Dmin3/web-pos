@@ -1,16 +1,13 @@
 package com.example.webpos;
 
 import lombok.ToString;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
-
 public class StreamTest {
-    static class Comment{
+    static class Comment {
         private Long id;
 
         public Long getId() {
@@ -22,7 +19,7 @@ public class StreamTest {
         }
     }
 
-    static class CommentLikes{
+    static class CommentLikes {
         private Long commentId;
 
         public Long getCommentId() {
@@ -35,7 +32,7 @@ public class StreamTest {
     }
 
     @ToString
-    static class CommentResponse{
+    static class CommentResponse {
         private Long id;
         private boolean isLike;
 
@@ -72,7 +69,6 @@ public class StreamTest {
 
     @Test
     void List_삭제() {
-
         Comment comment1 = new Comment(1L);
         Comment comment2 = new Comment(2L);
         Comment comment3 = new Comment(3L);
@@ -87,6 +83,5 @@ public class StreamTest {
         commentList.remove(comment2);
 
         System.out.println(commentList);
-
     }
 }

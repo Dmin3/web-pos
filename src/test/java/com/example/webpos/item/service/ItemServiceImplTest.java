@@ -12,6 +12,7 @@ import com.example.webpos.support.RepositoryTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.event.RecordApplicationEvents;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @RepositoryTest
+@RecordApplicationEvents
 class ItemServiceImplTest {
     @Autowired
     private ItemRepository itemRepository;
@@ -28,7 +30,7 @@ class ItemServiceImplTest {
     @Autowired
     private MemberRepository memberRepository;
 
-    private ItemService itemService;
+    private ItemServiceImpl itemService;
 
     private Member member;
 
