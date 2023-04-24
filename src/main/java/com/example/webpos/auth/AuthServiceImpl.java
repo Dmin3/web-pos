@@ -31,10 +31,7 @@ public class AuthServiceImpl implements AuthService {
             throw new RuntimeException("이미 가입 되어 있는 유저입니다.");
         }
 
-        Member member = memberSignUpReq.toEntity(passwordEncoder);
-
-        memberRepository.save(member);
-
+        Member member  = memberRepository.save(memberSignUpReq.toEntity(passwordEncoder));
 
         return MemberRes.of(member);
     }
