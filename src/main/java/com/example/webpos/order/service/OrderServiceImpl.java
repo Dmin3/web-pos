@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
     public OrdersInfo get(Long orderId) {
         Orders orders = ordersRepository.findById(orderId).orElseThrow(OrdersNotFoundException::new);
 
-        List<OrderItem> orderItemList = orderItemRepository.findByOrder(orderId);
+        List<OrderItem> orderItemList = orderItemRepository.findByOrdersId(orderId);
 
         List<OrdersInfo.ItemInfo> itemInfos = orderItemList.stream().map(orderItem -> OrdersInfo.ItemInfo.of(orderItem.getItem(), orderItem.getAmount())).toList();
 

@@ -17,7 +17,7 @@ public class OrderItemRepositoryImpl implements OrderItemRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<OrderItem> findByOrder(Long orderId) {
+    public List<OrderItem> findByOrdersId(Long orderId) {
         return queryFactory.selectFrom(orderItem)
                 .innerJoin(orderItem.orders, orders).fetchJoin()
                 .innerJoin(orderItem.item, item).fetchJoin()

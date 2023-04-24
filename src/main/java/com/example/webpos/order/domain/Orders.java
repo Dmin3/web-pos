@@ -30,6 +30,10 @@ public class Orders extends BaseTimeEntity {
     @Column(nullable = false)
     private Integer peopleCount;
 
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
     public static Orders createOrders(Member member, Integer peopleCount) {
         return new Orders(member, OrderStatus.START, peopleCount);
     }
